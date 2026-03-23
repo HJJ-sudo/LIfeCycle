@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context docBase="D:/JAVA/code/JavaWeb/src/main/webapp">
+  <Resources cacheMaxSize="10240">
+    <PreResources base="D:/JAVA/code/JavaWeb/target/classes" className="org.apache.catalina.webresources.DirResourceSet" webAppMount="/WEB-INF/classes"/>
+  </Resources>
+</Context>

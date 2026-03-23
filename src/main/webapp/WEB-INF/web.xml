@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <!-- 生命周期验证Servlet配置 -->
+    <servlet>
+        <servlet-name>LifeCycleServlet</servlet-name>
+        <servlet-class>com.huangjunjie.week3.demo.LifeCycleServlet</servlet-class>
+        <!-- 可选：配置Tomcat启动时就初始化Servlet，不配置则第一次访问时初始化 -->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LifeCycleServlet</servlet-name>
+        <url-pattern>/lifeCycle</url-pattern>
+    </servlet-mapping>
+
+    <!-- 注册参数Servlet配置（新增） -->
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <!-- 替换成你的包名 + RegisterServlet -->
+        <servlet-class>com.huangjunjie.week3.demo.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <!-- 访问路径：/registerServlet -->
+        <url-pattern>/registerServlet</url-pattern>
+    </servlet-mapping>
+</web-app>
