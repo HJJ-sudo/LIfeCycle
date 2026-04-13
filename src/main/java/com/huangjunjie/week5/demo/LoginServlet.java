@@ -1,31 +1,34 @@
 package com.huangjunjie.week5.demo;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.ServletException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/login") // 对应form的action
 public class LoginServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
 
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-
-        // 1. 获取参数
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-
-        // 2. 验证（作业要求：固定账号 DaBing / 123）
-        if("DaBing".equals(username) && "123".equals(password)) {
-            out.println("Login Success!!!");
-            out.println("Welcome " + username);
-        } else {
-            out.println("Username or Password Error!!!");
+            // 模拟验证：账号 admin 密码 123
+            if ("admin".equals(username) && "123".equals(password)) {
+                // 存到request属性
+                request.setAttribute("loginUser", username);
+                // 转发到用户页
+                RequestDispatcher rd = request.getRequestDispatcher("userInfo.jsp");
+                rd.forward(request, response);
+            } else {
+                // 错误信息
+                request.setAttribute("error", "用户名或密码错误");
+                RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+                rd.forward(request, response);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
