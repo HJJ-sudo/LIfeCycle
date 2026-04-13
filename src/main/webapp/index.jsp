@@ -19,6 +19,7 @@
 <ul>
     <li><a href="/JavaWeb/lifeCycle">Servlet生命周期验证</a></li>
     <li><a href="/JavaWeb/registerServlet">register表单参数获取</a></li>
+    <li><a href="login.jsp">点击登录</a></li>
 </ul>
 </body>
 </html>
